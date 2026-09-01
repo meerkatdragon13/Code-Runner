@@ -2,7 +2,6 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    // I Love Llama.
     if (argc != 3) {
         cerr << "Error too many or too little arguments." << endl << "Correct argument amounts 2";
         exit(1);

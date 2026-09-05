@@ -10,18 +10,36 @@ void run_c_code(string filename) {
     system(run_executable.c_str());
     system(delete_file.c_str());
 }
+
 void run_js_code(string filename) {
     string run_code = "node " + filename;
     system(run_code.c_str());
 }
 
-int main(int argc, char *argv[]) {
-    string filetype = string(argv[2]);
+string get_extension(string filename) {
+    int spot = 0;
+    string ch;
+    string full_word;
+    while (true) {
+        spot++;
+        ch = filename[filename.length() - spot];
+        if (ch == ".") {
+            break;
+        }
+        else {
+            full_word = ch + full_word;
+        }
+    }
+    return full_word;
+}
 
-    if (filetype == "c") {
+int main(int argc, char *argv[]) {
+    string file_extension = get_extension(argv[1]);
+
+    if (file_extension == "cpp") {
         run_c_code(argv[1]);
     }
-    else if (filetype == "j") {
+    else if (file_extension == "js") {
         run_js_code(argv[1]);
     }
     else {
